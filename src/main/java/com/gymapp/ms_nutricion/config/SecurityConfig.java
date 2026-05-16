@@ -1,4 +1,4 @@
-package config;
+package com.gymapp.ms_nutricion.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

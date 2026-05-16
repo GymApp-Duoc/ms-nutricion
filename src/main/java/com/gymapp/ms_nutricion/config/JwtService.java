@@ -1,4 +1,4 @@
-package config;
+package com.gymapp.ms_nutricion.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

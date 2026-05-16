@@ -1,4 +1,4 @@
-package config;
+package com.gymapp.ms_nutricion.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
