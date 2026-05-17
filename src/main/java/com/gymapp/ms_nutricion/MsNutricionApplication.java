@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients // Habilita la comunicación síncrona con ms-miembros, gamificación y notificaciones
+@EnableFeignClients
 public class MsNutricionApplication {
 
 	public static void main(String[] args) {

@@ -59,7 +59,6 @@ public class PlanNutricionalServiceImpl implements PlanNutricionalService {
     public PlanNutricionalResponseDTO crear(PlanNutricionalRequestDTO dto) {
         log.info("[NUTRICION] Intentando asignar plan para miembro ID: {}", dto.getMiembroId());
 
-        // LÓGICA DE NEGOCIO ROBUSTA: Validar existencia síncrona mediante Feign
         try {
             miembroClient.obtenerPorId(dto.getMiembroId());
         } catch (FeignException.NotFound e) {
@@ -113,7 +112,6 @@ public class PlanNutricionalServiceImpl implements PlanNutricionalService {
     }
 
     private void emitirEventosIntegracion(PlanNutricional plan) {
-        // Notificación a Gamificación (Asignación de experiencia por cumplir metas)
         try {
             Map<String, Object> evento = new HashMap<>();
             evento.put("miembroId", plan.getMiembroId());
@@ -124,7 +122,6 @@ public class PlanNutricionalServiceImpl implements PlanNutricionalService {
             log.warn("[INTEGRACION] No se pudo conectar con ms-gamificacion: {}", e.getMessage());
         }
 
-        // Envío automático de alerta al usuario
         try {
             Map<String, Object> noti = new HashMap<>();
             noti.put("miembroId", plan.getMiembroId());
