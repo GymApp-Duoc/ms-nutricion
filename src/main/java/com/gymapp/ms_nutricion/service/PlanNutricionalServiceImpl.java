@@ -112,7 +112,10 @@ public class PlanNutricionalServiceImpl implements PlanNutricionalService {
     }
 
     private void emitirEventosIntegracion(PlanNutricional plan) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 02e6e4bee25703bacad01b88f3d59c71fade2b73
         try {
             Map<String, Object> evento = new HashMap<>();
             evento.put("miembroId", plan.getMiembroId());
@@ -123,7 +126,10 @@ public class PlanNutricionalServiceImpl implements PlanNutricionalService {
             log.warn("[INTEGRACION] No se pudo conectar con ms-gamificacion: {}", e.getMessage());
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 02e6e4bee25703bacad01b88f3d59c71fade2b73
         try {
             Map<String, Object> noti = new HashMap<>();
             noti.put("miembroId", plan.getMiembroId());
