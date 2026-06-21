@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: ms-nutricion-test
+  datasource:
+    url: jdbc:h2:mem:testdb_nutricion
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  flyway:
+    enabled: false
+
+eureka:
+  client:
+    enabled: false # Aislamiento total del entorno de pruebas
+
+jwt:
+  secret: testSecretKeyTotalmenteFalsaParaQueNoFalleElContextoDePruebas
+
+server:
+  port: 0
