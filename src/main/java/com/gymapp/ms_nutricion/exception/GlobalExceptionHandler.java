@@ -4,6 +4,7 @@ import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -42,10 +43,17 @@ public class GlobalExceptionHandler {
                 .body(Map.of("error_comunicacion", "El servicio de validación institucional no se encuentra disponible temporalmente."));
     }
 
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, String>> manejarErrorDeParsing(HttpMessageNotReadableException ex) {
+        log.warn("[PARSEO_ERROR] JSON mal formado o tipos incompatibles (ej. fecha): {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("error_formato", "Estructura de datos inválida. Verifique que las fechas sigan el formato YYYY-MM-DD y los datos numéricos sean correctos."));
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> manejarErroresInesperados(Exception ex) {
         log.error("[INTERNAL_ERROR] Ocurrió una falla crítica: ", ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Map.of("error_interno", "Falla inesperada en el servidor."));
     }
 }
-

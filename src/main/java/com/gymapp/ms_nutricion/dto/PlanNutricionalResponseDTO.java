@@ -1,5 +1,6 @@
 package com.gymapp.ms_nutricion.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Schema(description = "Respuesta consolidada del plan nutricional registrado")
 public class PlanNutricionalResponseDTO {
     private Long id;
     private Long miembroId;
@@ -19,4 +21,3 @@ public class PlanNutricionalResponseDTO {
     private Integer caloriasDiarias;
     private String detalleMenu;
 }
-
